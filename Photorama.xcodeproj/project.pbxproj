@@ -21,6 +21,9 @@
 		CD7210F51E6D092500C475AA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210F41E6D092500C475AA /* CoreDataStack.swift */; };
 		CD7210F81E6D11CD00C475AA /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210F61E6D11CD00C475AA /* Photo+CoreDataClass.swift */; };
 		CD7210F91E6D11CD00C475AA /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210F71E6D11CD00C475AA /* Photo+CoreDataProperties.swift */; };
+		CD7210FC1E6E1CF700C475AA /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210FB1E6E1CF700C475AA /* ImageStore.swift */; };
+		CD7210FE1E6E5C5600C475AA /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210FD1E6E5C5600C475AA /* TagsViewController.swift */; };
+		CD7211001E6E5E8D00C475AA /* TagDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7210FF1E6E5E8D00C475AA /* TagDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		CD7210F41E6D092500C475AA /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
 		CD7210F61E6D11CD00C475AA /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataClass.swift"; path = "../Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD7210F71E6D11CD00C475AA /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photo+CoreDataProperties.swift"; path = "../Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD7210FB1E6E1CF700C475AA /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
+		CD7210FD1E6E5C5600C475AA /* TagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
+		CD7210FF1E6E5E8D00C475AA /* TagDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,10 @@
 				CD7210C91E68AD8C00C475AA /* AppDelegate.swift */,
 				CD7210DB1E68ADCA00C475AA /* PhotosViewController.swift */,
 				CD7210CD1E68AD8C00C475AA /* Main.storyboard */,
+				CD7210FD1E6E5C5600C475AA /* TagsViewController.swift */,
+				CD7210FF1E6E5E8D00C475AA /* TagDataSource.swift */,
 				CD7210E91E6D020D00C475AA /* Photorama.xcdatamodeld */,
+				CD7210FB1E6E1CF700C475AA /* ImageStore.swift */,
 				CD7210E71E6CFC3000C475AA /* PhotoInfoViewController.swift */,
 				CD7210E51E6CC5C700C475AA /* PhotoCollectionViewCell.swift */,
 				CD7210E31E6C8D3200C475AA /* PhotoDataSource.swift */,
@@ -100,7 +109,7 @@
 			buildPhases = (
 				CD7210C21E68AD8C00C475AA /* Sources */,
 				CD7210C31E68AD8C00C475AA /* Frameworks */,
-				CD7210C41E68AD8C00C475AA /* Resources */,
+				CD7210FA1E6E1C8800C475AA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -146,13 +155,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD7210C41E68AD8C00C475AA /* Resources */ = {
+		CD7210FA1E6E1C8800C475AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7210CF1E68AD8C00C475AA /* Main.storyboard in Resources */,
 				CD7210D41E68AD8C00C475AA /* LaunchScreen.storyboard in Resources */,
 				CD7210D11E68AD8C00C475AA /* Assets.xcassets in Resources */,
-				CD7210CF1E68AD8C00C475AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,11 +178,14 @@
 				CD7210EB1E6D020D00C475AA /* Photorama.xcdatamodeld in Sources */,
 				CD7210E01E69FB6900C475AA /* PhotoStore.swift in Sources */,
 				CD7210E41E6C8D3200C475AA /* PhotoDataSource.swift in Sources */,
+				CD7210FE1E6E5C5600C475AA /* TagsViewController.swift in Sources */,
 				CD7210E61E6CC5C700C475AA /* PhotoCollectionViewCell.swift in Sources */,
 				CD7210F51E6D092500C475AA /* CoreDataStack.swift in Sources */,
 				CD7210F91E6D11CD00C475AA /* Photo+CoreDataProperties.swift in Sources */,
 				CD7210E81E6CFC3000C475AA /* PhotoInfoViewController.swift in Sources */,
+				CD7211001E6E5E8D00C475AA /* TagDataSource.swift in Sources */,
 				CD7210CA1E68AD8C00C475AA /* AppDelegate.swift in Sources */,
+				CD7210FC1E6E1CF700C475AA /* ImageStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +348,7 @@
 				CD7210DA1E68AD8C00C475AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

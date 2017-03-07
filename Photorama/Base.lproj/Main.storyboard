@@ -97,15 +97,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m47-op-9XE">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="623"/>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRs-Io-peB">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qFC-XC-dBA"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Tags" id="I5T-3b-iUN"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="giM-ko-Hlz" firstAttribute="top" secondItem="m47-op-9XE" secondAttribute="bottom" id="GJC-y8-uzt"/>
-                            <constraint firstItem="m47-op-9XE" firstAttribute="top" secondItem="0fq-Jz-niG" secondAttribute="bottom" id="Ynp-uk-Yi6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="m47-op-9XE" secondAttribute="trailing" id="hqe-B1-wWL"/>
-                            <constraint firstItem="m47-op-9XE" firstAttribute="leading" secondItem="ZH9-ig-WbS" secondAttribute="leadingMargin" id="nxz-oF-EYb"/>
+                            <constraint firstItem="m47-op-9XE" firstAttribute="top" secondItem="ZH9-ig-WbS" secondAttribute="topMargin" id="HqA-90-tPc"/>
+                            <constraint firstItem="giM-ko-Hlz" firstAttribute="top" secondItem="qRs-Io-peB" secondAttribute="bottom" id="L7w-2k-AIF"/>
+                            <constraint firstItem="m47-op-9XE" firstAttribute="leading" secondItem="ZH9-ig-WbS" secondAttribute="leadingMargin" id="Zny-WR-BPc"/>
+                            <constraint firstAttribute="trailing" secondItem="qRs-Io-peB" secondAttribute="trailing" id="eE2-e9-dja"/>
+                            <constraint firstItem="m47-op-9XE" firstAttribute="trailing" secondItem="ZH9-ig-WbS" secondAttribute="trailingMargin" id="kdG-DN-QZy"/>
+                            <constraint firstItem="qRs-Io-peB" firstAttribute="top" secondItem="m47-op-9XE" secondAttribute="bottom" id="orT-AX-yGZ"/>
+                            <constraint firstItem="qRs-Io-peB" firstAttribute="leading" secondItem="ZH9-ig-WbS" secondAttribute="leading" id="rAX-6d-wFc"/>
                         </constraints>
                     </view>
                     <connections>

@@ -21,6 +21,7 @@ enum PhotoError: Error {
 class PhotoStore {
     
     let coreDataStack = CoreDataStack(modelName: "Photorama")
+    let imageStore = ImageStore()
     
     let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -70,7 +71,8 @@ class PhotoStore {
     func fetchImageForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void) {
         
         
-        if let image = photo.image {
+        let photoKey = photo.photoKey
+        if let image = imageStore.imageForKey(key: photoKey) {
             completion(.Success(image))
             return
         }
@@ -84,6 +86,7 @@ class PhotoStore {
         
         if case let .Success(image) = result {
             photo.image = image
+            self.imageStore.setImage(image: image, forKey: photoKey)
         }
         completion(result)
         }
@@ -126,5 +129,30 @@ class PhotoStore {
             throw fetchRequestError!
         }
         return photos
+    }
+    
+    func fetchMainQueueTags(predicate: NSPredicate? = nil,
+                            sortDescriptors: [NSSortDescriptor]? = nil) throws -> [NSManagedObject] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        let mainQueueContext = self.coreDataStack.mainQueueContext
+        var mainQueueTags: [NSManagedObject]?
+        var fetchRequestError: Error?
+        mainQueueContext.performAndWait {
+            do {
+                mainQueueTags = try mainQueueContext.fetch(fetchRequest) as? [NSManagedObject]
+                
+                
+        }
+            catch let error {
+                fetchRequestError = error
+            }
+        }
+        guard let tags = mainQueueTags else {
+            throw fetchRequestError!
+        }
+        return tags
     }
 }
