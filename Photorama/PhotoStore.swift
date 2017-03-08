@@ -38,10 +38,10 @@ class PhotoStore {
             var result = self.processRecentPhotosRequest(data: data as NSData?, error: error as NSError?)
             
             if case let .Success(photos) = result {
-                let mainQueueContext = self.coreDataStack.mainQueueContext
-                mainQueueContext.performAndWait {
-                    try! mainQueueContext.obtainPermanentIDs(for: photos)
-                }
+               let privateQueueContext = self.coreDataStack.privateQueueContext
+                privateQueueContext.performAndWait({
+                    try! privateQueueContext.obtainPermanentIDs(for: photos)
+                })
                 let objectIDs = photos.map{ $0.objectID }
                 let predicate = NSPredicate(format: "self In %@", objectIDs)
                 let sortByDateTaken = NSSortDescriptor(key: "dateTaken", ascending: true)
@@ -65,7 +65,7 @@ class PhotoStore {
         guard let jsonData = data else {
             return .Failure(error!)
         }
-        return FlickrAPI.photosFromJSONData(data: jsonData, inContext: self.coreDataStack.mainQueueContext)
+        return FlickrAPI.photosFromJSONData(data: jsonData, inContext: self.coreDataStack.privateQueueContext)
     }
     
     func fetchImageForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void) {
