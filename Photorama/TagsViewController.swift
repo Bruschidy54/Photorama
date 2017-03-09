@@ -11,12 +11,16 @@ import CoreData
 
 class TagsViewController: UITableViewController {
     
+    // MARK: Declarations
+    
     var store: PhotoStore!
     var photo: Photo!
     
     var selectedIndexPaths = [NSIndexPath]()
     
     let tagDataSource = TagDataSource()
+    
+    // MARK: Button actions
     
     @IBAction func done(_ sender: Any) {
         presentingViewController?.dismiss(animated: true, completion: nil)
@@ -57,7 +61,7 @@ class TagsViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
  
-    
+    // MARK: View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +83,8 @@ class TagsViewController: UITableViewController {
             }
         }
     }
+    
+    // MARK: Table view methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tag = tagDataSource.tags[indexPath.row]

@@ -20,6 +20,8 @@ enum PhotoError: Error {
 
 class PhotoStore {
     
+    // MARK: Declarations
+    
     let coreDataStack = CoreDataStack(modelName: "Photorama")
     let imageStore = ImageStore()
     
@@ -27,6 +29,8 @@ class PhotoStore {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
+    
+    // MARK: Fetch photo methods
     
     func fetchRecentPhotos(completion: @escaping (PhotosResult) -> Void) {
         
@@ -61,15 +65,8 @@ class PhotoStore {
     task.resume()
 }
     
-    func processRecentPhotosRequest(data: NSData?, error: NSError?) -> PhotosResult {
-        guard let jsonData = data else {
-            return .Failure(error!)
-        }
-        return FlickrAPI.photosFromJSONData(data: jsonData, inContext: self.coreDataStack.privateQueueContext)
-    }
     
     func fetchImageForPhoto(photo: Photo, completion: @escaping (ImageResult) -> Void) {
-        
         
         let photoKey = photo.photoKey
         if let image = imageStore.imageForKey(key: photoKey) {
@@ -92,21 +89,7 @@ class PhotoStore {
         }
         task.resume()
     }
-    
-    func processImageRequest(data: NSData?, error: NSError?) ->ImageResult {
-        guard let imageData = data, let image = UIImage(data: imageData as Data) else {
-            
-            // Couldn't create an image
-            if data == nil {
-                return .Failure(error!)
-                
-            }
-            else {
-                return .Failure(PhotoError.ImageCreationError)
-            }
-        }
-        return .Success(image)
-    }
+
     
     func fetchMainQueuePhotos(predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [Photo] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photo")
@@ -154,5 +137,30 @@ class PhotoStore {
             throw fetchRequestError!
         }
         return tags
+    }
+    
+    
+    // MARK: Process photo methods
+    
+    func processRecentPhotosRequest(data: NSData?, error: NSError?) -> PhotosResult {
+        guard let jsonData = data else {
+            return .Failure(error!)
+        }
+        return FlickrAPI.photosFromJSONData(data: jsonData, inContext: self.coreDataStack.privateQueueContext)
+    }
+    
+    func processImageRequest(data: NSData?, error: NSError?) ->ImageResult {
+        guard let imageData = data, let image = UIImage(data: imageData as Data) else {
+            
+            // Couldn't create an image
+            if data == nil {
+                return .Failure(error!)
+                
+            }
+            else {
+                return .Failure(PhotoError.ImageCreationError)
+            }
+        }
+        return .Success(image)
     }
 }

@@ -10,10 +10,13 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
+    // MARK: Collection view outlets
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     
+    // MARK: Cell lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
